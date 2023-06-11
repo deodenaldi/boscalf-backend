@@ -30,7 +30,7 @@ class ProductController extends Controller
     {
         $items = Product::all();
 
-        return view('pages.products.index') -> with([
+        return view('pages.products.index')->with([
             'items' => $items
         ]);
     }
@@ -100,6 +100,7 @@ class ProductController extends Controller
 
         $item = Product::findOrFail($id);
         $item->update($data);
+
         return redirect()->route('products.index');
     }
 
@@ -121,7 +122,7 @@ class ProductController extends Controller
 
     public function gallery(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::findorFail($id);
         $items = ProductGallery::with('product')
             ->where('products_id', $id)
             ->get();

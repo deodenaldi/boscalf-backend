@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class="order">
+    <div class="orders">
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -23,14 +23,14 @@
                                 <tbody>
                                     @forelse ($items as $item)
                                         <tr>
-                                            <td> {{ $item->id }} </td>
-                                            <td> {{ $item->product->name }} </td>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->product->name }}</td>
                                             <td>
-                                                <img src=" {{ url($item->photo) }} ">
+                                                <img src="{{ url($item->photo) }}" alt="" />
                                             </td>
-                                            <td> {{ $item->is_default ? 'Ya' : 'Tidak' }} </td>
+                                            <td>{{ $item->is_default ? 'Ya' : 'Tidak' }}</td>
                                             <td>
-                                                <form action=" {{ route('product-galleries.destroy', $item->id) }}"
+                                                <form action="{{ route('product-galleries.destroy', $item->id) }}"
                                                     method="post" class="d-inline">
                                                     @csrf
                                                     @method('delete')
@@ -43,7 +43,7 @@
                                     @empty
                                         <tr>
                                             <td colspan="6" class="text-center p-5">
-                                                Data Tidak Tersedia
+                                                Data tidak tersedia
                                             </td>
                                         </tr>
                                     @endforelse
